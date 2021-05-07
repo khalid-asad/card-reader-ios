@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CardDetails: Equatable {
+public struct CardDetails: Hashable, Identifiable {
     var number: String?
     var expiryDate: String?
     var type: CardType
@@ -19,6 +19,8 @@ public struct CardDetails: Equatable {
         self.type = CardType(number: numberWithDelimiters?.replacingOccurrences(of: " ", with: ""))
         self.industry = .init(firstDigit: numberWithDelimiters?.first)
     }
+    
+    public var id: Int { hashValue }
 }
 
 public enum CardType: String, CaseIterable {
