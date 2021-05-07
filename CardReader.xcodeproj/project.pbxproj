@@ -14,6 +14,9 @@
 		19DC60E72643524D00E29843 /* CardReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60E62643524D00E29843 /* CardReaderTests.swift */; };
 		19DC60F22643524D00E29843 /* CardReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60F12643524D00E29843 /* CardReaderUITests.swift */; };
 		19DC610B2643527200E29843 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC610A2643527200E29843 /* CameraViewController.swift */; };
+		19DC628E2644D4A100E29843 /* ImageTextRecognizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */; };
+		19DC62942644DE7E00E29843 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC62932644DE7E00E29843 /* CardDetails.swift */; };
+		19DC629D2644E35D00E29843 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC629C2644E35D00E29843 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		19DC60F12643524D00E29843 /* CardReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReaderUITests.swift; sourceTree = "<group>"; };
 		19DC60F32643524D00E29843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19DC610A2643527200E29843 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextRecognizable.swift; sourceTree = "<group>"; };
+		19DC62932644DE7E00E29843 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
+		19DC629C2644E35D00E29843 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 		19DC60CE2643524C00E29843 /* CardReader */ = {
 			isa = PBXGroup;
 			children = (
+				19DC629B2644E35100E29843 /* Extensions */,
+				19DC62922644DE7400E29843 /* Models */,
 				19DC60CF2643524C00E29843 /* AppDelegate.swift */,
 				19DC60D12643524C00E29843 /* SceneDelegate.swift */,
 				19DC610A2643527200E29843 /* CameraViewController.swift */,
@@ -123,6 +131,23 @@
 				19DC60F32643524D00E29843 /* Info.plist */,
 			);
 			path = CardReaderUITests;
+			sourceTree = "<group>";
+		};
+		19DC62922644DE7400E29843 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19DC62932644DE7E00E29843 /* CardDetails.swift */,
+				19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19DC629B2644E35100E29843 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19DC629C2644E35D00E29843 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DC629D2644E35D00E29843 /* UIView+Extensions.swift in Sources */,
 				19DC610B2643527200E29843 /* CameraViewController.swift in Sources */,
 				19DC60D02643524C00E29843 /* AppDelegate.swift in Sources */,
 				19DC60D22643524C00E29843 /* SceneDelegate.swift in Sources */,
+				19DC628E2644D4A100E29843 /* ImageTextRecognizable.swift in Sources */,
+				19DC62942644DE7E00E29843 /* CardDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -409,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
