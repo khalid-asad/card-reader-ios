@@ -9,16 +9,14 @@ import UIKit
 import Vision
 import VisionKit
 
-class CameraViewController: UIViewController {
+public class CameraViewController: UIViewController, ImageTextRecognizable {
     
     var stackView = UIStackView()
     var imageView = UIImageView()
     
     var image: UIImage?
-    var textRecognitionRequest = VNRecognizeTextRequest()
-    var recognizedText = [String]()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -26,19 +24,22 @@ class CameraViewController: UIViewController {
         
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
-        self.present(documentCameraViewController, animated: true, completion: nil)
+        present(documentCameraViewController, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureView()
-        validateImage()
+        validateImage(image: image) { [weak self] cardDetails in
+            self?.configureCardDetailsViews(with: cardDetails)
+        }
     }
 }
 
+// MARK: - VNDocumentCameraViewControllerDelegate
 extension CameraViewController: VNDocumentCameraViewControllerDelegate {
     
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+    public func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         let image = scan.imageOfPage(at: 0)
         self.image = image
         imageView.image = image
@@ -46,7 +47,8 @@ extension CameraViewController: VNDocumentCameraViewControllerDelegate {
     }
 }
 
-extension CameraViewController {
+// MARK: - UIKit Configuration
+public extension CameraViewController {
         
     func configureView() {
         let previewView = UIView()
@@ -64,7 +66,6 @@ extension CameraViewController {
         imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         stackView = UIStackView.stackView(spacing: 10, axis: .vertical)
-        stackView.addArrangedSubview(UILabel.genericLabel(text: "\nUnparsed Results:"))
 
         previewView.addSubview(stackView)
 
@@ -81,40 +82,15 @@ extension CameraViewController {
         previewView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func validateImage() {
-        guard let cgImage = image?.cgImage else { return }
-        textRecognitionRequest.recognitionLevel = .accurate
-        textRecognitionRequest.usesLanguageCorrection = false
-        textRecognitionRequest.customWords = ["mastercard", "visa", "amex", "Expiry Date"]
-        textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
-            if let results = request.results, !results.isEmpty {
-                if let requestResults = request.results as? [VNRecognizedTextObservation] {
-                    self.recognizedText = []
-                    for observation in requestResults {
-                        guard let candidiate = observation.topCandidates(1).first else { return }
-                        self.recognizedText.append(candidiate.string)
-                        self.stackView.addArrangedSubview(UILabel.genericLabel(text: candidiate.string))
-                    }
-                    self.parseResults()
-                }
-            }
-        })
-        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-        do {
-            try handler.perform([textRecognitionRequest])
-        } catch {
-            print(error)
-        }
-    }
-    
-    func parseResults() {
-        let creditCardNumber = recognizedText.first(where: { $0.count > 4 && ["4", "5", "3"].contains($0.first) })
-        let expiryDate = recognizedText.first(where: { $0.count > 4 && $0.contains("/") })
+    func configureCardDetailsViews(with cardDetails: CardDetails?) {
+        guard let cardDetails = cardDetails else { return }
         
         let contentStackView = UIStackView.stackView(spacing: 6, axis: .vertical)
         
-        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Credit Card #: \(creditCardNumber ?? "None found!")"))
-        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Expiry Date: \(expiryDate ?? "None found!")\n"))
+        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Credit Card #: \(cardDetails.number ?? "None found!")"))
+        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Expiry Date: \(cardDetails.expiryDate ?? "None found!")"))
+        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Type: \(cardDetails.type.rawValue)"))
+        contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Industry: \(cardDetails.industry.rawValue)\n"))
         contentStackView.addArrangedSubview(UILabel.genericLabel(text: "Does this look right?"))
         contentStackView.addArrangedSubview(UIButton.button(text: "Yes", backgroundColor: .green))
         contentStackView.addArrangedSubview(UILabel.genericLabel(text: "If not, would you like to try scanning again?"))
@@ -140,46 +116,5 @@ extension CameraViewController {
         shadowView.layer.shadowRadius = 10
         
         stackView.insertArrangedSubview(shadowView, at: 0)
-    }
-}
-
-extension UIStackView {
-    
-    static func stackView(spacing: CGFloat, axis: NSLayoutConstraint.Axis) -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = axis
-        stackView.alignment = .center
-        stackView.spacing = spacing
-        return stackView
-    }
-}
-
-extension UIButton {
-    
-    static func button(text: String, backgroundColor: UIColor) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setAttributedTitle(NSAttributedString(string: text), for: .normal)
-        button.backgroundColor = backgroundColor
-        button.layer.cornerRadius = 5
-        button.titleLabel?.textColor = .black
-        button.titleLabel?.numberOfLines = 0
-        button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.sizeToFit()
-        return button
-    }
-}
-
-extension UILabel {
-    
-    static func genericLabel(text: String) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        return label
     }
 }
