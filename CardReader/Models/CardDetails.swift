@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public struct CardDetails: Hashable, Identifiable {
     var number: String?
@@ -23,16 +24,16 @@ public struct CardDetails: Hashable, Identifiable {
     public var id: Int { hashValue }
 }
 
-public enum CardType: String, CaseIterable {
+public enum CardType: String, CaseIterable, Identifiable {
     case masterCard = "MasterCard"
     case visa = "Visa"
     case amex = "Amex"
     case discover = "Discover"
-    case dinersClubOrCarteBlanch = "Diner's Club/Carte Blanche"
+    case dinersClubOrCarteBlanche = "Diner's Club/Carte Blanche"
     case unknown
     
     public init(number: String?) {
-        guard let count = number?.count, count > 14 else {
+        guard let count = number?.count, count >= 14 else {
             self = .unknown
             return
         }
@@ -41,7 +42,7 @@ public enum CardType: String, CaseIterable {
             if count == 15 {
                 self = .amex
             } else if count == 14 {
-                self = .dinersClubOrCarteBlanch
+                self = .dinersClubOrCarteBlanche
             } else {
                 self = .unknown
             }
@@ -51,9 +52,22 @@ public enum CardType: String, CaseIterable {
         default: self = .unknown
         }
     }
+    
+    public var id: Int { hashValue }
+    
+    public var image: Image? {
+        switch self {
+        case .masterCard: return Image("mastercard-\(Color.isDarkInterfaceStyle ? "white" : "dark")-bg")
+        case .visa: return Image("visa")
+        case .amex: return Image("amex")
+        case .discover: return Image("discover")
+        case .dinersClubOrCarteBlanche: return Image("dinersclub")
+        case .unknown: return nil
+        }
+    }
 }
 
-public enum CardIndustry: String, CaseIterable {
+public enum CardIndustry: String, CaseIterable, Identifiable {
     case industry = "ISO/TC 68 and other industry assignments"
     case airlines = "Airlines"
     case airlinesFinancialAndFuture = "Airlines, financial and other future industry assignments"
@@ -79,4 +93,6 @@ public enum CardIndustry: String, CaseIterable {
         default: self = .unknown
         }
     }
+    
+    public var id: Int { hashValue }
 }

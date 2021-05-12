@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UIHostingController(rootView: CardResultsView())
+        window.rootViewController = UIHostingController(rootView: CardFormView())
         self.window = window
         window.makeKeyAndVisible()
     }
