@@ -55,8 +55,10 @@ public struct CardFormView: View {
                 }
                 .sheet(isPresented: $isShowingSheet) {
                     CardReaderView() { cardDetails in
+                        print(cardDetails)
                         cardNumber = cardDetails?.number ?? ""
                         cardExpiryDate = cardDetails?.expiryDate ?? ""
+                        cardName = cardDetails?.name ?? ""
                         isShowingSheet.toggle()
                     }
                     .edgesIgnoringSafeArea(.all)

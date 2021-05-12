@@ -9,14 +9,16 @@ import Foundation
 import SwiftUI
 
 public struct CardDetails: Hashable, Identifiable {
-    var number: String?
-    var expiryDate: String?
-    var type: CardType
-    var industry: CardIndustry
+    public var number: String?
+    public var expiryDate: String?
+    public var name: String?
+    public var type: CardType
+    public var industry: CardIndustry
     
-    public init(numberWithDelimiters: String? = nil, expiryDate: String? = nil) {
+    public init(numberWithDelimiters: String? = nil, expiryDate: String? = nil, name: String? = nil) {
         self.number = numberWithDelimiters
         self.expiryDate = expiryDate
+        self.name = name
         self.type = CardType(number: numberWithDelimiters?.replacingOccurrences(of: " ", with: ""))
         self.industry = .init(firstDigit: numberWithDelimiters?.first)
     }
