@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "mc_vrt_opt_pos_73_3x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

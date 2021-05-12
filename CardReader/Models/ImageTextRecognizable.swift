@@ -43,8 +43,22 @@ public extension ImageTextRecognizable {
     }
     
     func parseResults(for recognizedText: [String]) -> CardDetails {
+        // Credit Card Number
         let creditCardNumber = recognizedText.first(where: { $0.count > 14 && ["4", "5", "3", "6"].contains($0.first) })
-        let expiryDate = recognizedText.first(where: { $0.count > 4 && $0.contains("/") })
-        return CardDetails(numberWithDelimiters: creditCardNumber, expiryDate: expiryDate)
+        
+        // Expiry Date
+        let expiryDateString = recognizedText.first(where: { $0.count > 4 && $0.contains("/") })
+        let expiryDate = expiryDateString?.filter({ $0.isNumber || $0 == "/" })
+        
+        // Name
+        let ignoreList = ["GOOD THRU", "GOOD", "THRU", "Gold", "GOLD", "Standard", "STANDARD", "Platinum", "PLATINUM", "WORLD ELITE", "WORLD", "ELITE", "World Elite", "World", "Elite"]
+        let wordsToAvoid = [creditCardNumber, expiryDateString] +
+            ignoreList +
+            CardType.allCases.map { $0.rawValue } +
+            CardType.allCases.map { $0.rawValue.lowercased() } +
+            CardType.allCases.map { $0.rawValue.uppercased() }
+        let name = recognizedText.filter({ !wordsToAvoid.contains($0) }).last
+        
+        return CardDetails(numberWithDelimiters: creditCardNumber, expiryDate: expiryDate, name: name)
     }
 }

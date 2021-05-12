@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "AXP_BlueBoxLogo_EXTRALARGEscale_RGB_DIGITAL_1600x1600.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
