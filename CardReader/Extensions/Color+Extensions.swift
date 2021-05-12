@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+public extension Color {
     
     static var isDarkInterfaceStyle: Bool {
         primaryColor == .white

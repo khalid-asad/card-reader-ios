@@ -40,14 +40,14 @@ public struct CardFormField: View {
             
             if isSecure {
                 SecureField("", text: $text, onCommit: { onEdit?() })
-                    .cornerRadius(5)
                     .font(.system(size: 20))
-                    .foregroundColor(.backgroundColor)
+                    .foregroundColor(.black)
                     .autocapitalization(autocapitalizationType)
                     .disableAutocorrection(true)
                     .border(Color(UIColor.separator))
-                    .padding(.all)
+                    .padding(.all, 4)
                     .background(Color.grayColor)
+                    .cornerRadius(5)
             } else {
                 TextField(
                     "",
@@ -56,13 +56,13 @@ public struct CardFormField: View {
                         self.isEditing = isEditing
                         if !isEditing { onEdit?() }
                     })
-                    .cornerRadius(5)
                     .font(.largeTitle)
-                    .foregroundColor(.backgroundColor)
+                    .foregroundColor(.black)
                     .autocapitalization(autocapitalizationType)
                     .disableAutocorrection(true)
-                    .padding(.all)
+                    .padding(.all, 4)
                     .background(Color.grayColor)
+                    .cornerRadius(5)
 //                    .onReceive(Just(text), perform: { newValue in
 //                        if isCreditCardNumber {
 //                            if [3, 8, 13].contains(text.count) && [4, 9, 15].contains(newValue.count) {
