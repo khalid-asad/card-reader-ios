@@ -32,7 +32,7 @@ public struct CardFormView: View {
             VStack {
                 CreditCardView(backgroundColors: colors, cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
                     .shadow(color: .primaryColor, radius: 5)
-                    .padding(.top, 30)
+                    .padding(.top, 60)
                                 
                 if cardIndustry != .unknown {
                     Text(cardIndustry.rawValue)
@@ -119,6 +119,8 @@ public struct CardFormView: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+        .background(Color.backgroundColor)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
