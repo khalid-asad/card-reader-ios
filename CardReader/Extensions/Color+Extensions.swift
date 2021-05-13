@@ -8,6 +8,13 @@
 import Foundation
 import SwiftUI
 
+public extension UIColor {
+    
+    static var darkGrayColor: UIColor {
+        UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+    }
+}
+
 public extension Color {
     
     static var isDarkInterfaceStyle: Bool {
@@ -19,7 +26,7 @@ public extension Color {
     }
     
     static var backgroundColor: Color {
-        Color(UIColor { $0.userInterfaceStyle == .dark ? .darkGray : .white })
+        Color(UIColor { $0.userInterfaceStyle == .dark ? .darkGrayColor : .white })
     }
     
     static var grayColor: Color {

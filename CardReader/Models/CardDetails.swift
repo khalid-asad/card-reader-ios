@@ -10,15 +10,17 @@ import SwiftUI
 
 public struct CardDetails: Hashable, Identifiable {
     public var number: String?
-    public var expiryDate: String?
     public var name: String?
+    public var expiryDate: String?
+    public var cvcNumber: String?
     public var type: CardType
     public var industry: CardIndustry
     
-    public init(numberWithDelimiters: String? = nil, expiryDate: String? = nil, name: String? = nil) {
+    public init(numberWithDelimiters: String? = nil, name: String? = nil, expiryDate: String? = nil, cvcNumber: String? = nil) {
         self.number = numberWithDelimiters
-        self.expiryDate = expiryDate
         self.name = name
+        self.expiryDate = expiryDate
+        self.cvcNumber = cvcNumber
         self.type = CardType(number: numberWithDelimiters?.replacingOccurrences(of: " ", with: ""))
         self.industry = .init(firstDigit: numberWithDelimiters?.first)
     }
