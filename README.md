@@ -1,7 +1,7 @@
 # card-reader-ios
 A credit card reader and parser for iOS Using Native Vision/VisionKit
 
-https://user-images.githubusercontent.com/37077623/118050836-06553300-b34e-11eb-922e-94dcf6f8d905.mp4
+https://user-images.githubusercontent.com/37077623/118071540-f94c3a00-b375-11eb-97cc-35326e19499b.mp4
 
 # Instructions
 - Hold camera up to a card and stay still until it gets recoginized and a picture gets taken.
@@ -13,7 +13,14 @@ There are 2 options to present:
 1. Simply navigate to or present CardResultsView as a sheet or View:
 
 `var body: some View {
-	CardFormView()
+	CardFormView(colors: [.green, .blue, .black], completion: { cardDetails in 
+        print("Card Number:\n\(cardDetails.number ?? "")")
+        print("Expiry Date:\n\(cardDetails.expiryDate ?? "")")
+        print("Name:\n\(cardDetails.name ?? "")")
+        print("Name:\n\(cardDetails.cvcNumber ?? "")")
+        print("Card Type:\n\(cardDetails.type.rawValue)")
+        print("Card Industry:\n\(cardDetails.industry.rawValue)")
+    })
 }`
 
 
