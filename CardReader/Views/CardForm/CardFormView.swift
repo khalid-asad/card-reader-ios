@@ -12,50 +12,99 @@ public struct CardFormView: View {
     
     @State private var isShowingSheet = false
     @State private var cardNumber: String = ""
-    @State private var cardExpiryDate: String = ""
     @State private var cardName: String = ""
+    @State private var cardExpiryDate: String = ""
+    @State private var cvcNumber: String = ""
     
+    public var completion: ((CardDetails) -> Void)
+    
+    private var colors: [Color]
     private var formattedCardNumber: String { cardNumber == "" ? "4111 2222 3333 4444" : cardNumber }
     private var cardIndustry: CardIndustry { .init(firstDigit: formattedCardNumber.first) }
         
+    public init(colors: [Color] = [.green, .blue, .black], completion: @escaping ((CardDetails) -> Void )) {
+        self.colors = colors
+        self.completion = completion
+    }
+    
     public var body: some View {
         ScrollView(.vertical) {
             VStack {
-                CreditCardView(backgroundColors: [.blue, .black], cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
+                CreditCardView(backgroundColors: colors, cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
                     .shadow(color: .primaryColor, radius: 5)
                     .padding(.top, 30)
-                
-                Spacer(minLength: 30)
-                
+                                
                 if cardIndustry != .unknown {
                     Text(cardIndustry.rawValue)
                         .font(.system(size: 14))
                         .foregroundColor(.primaryColor)
+                        .padding(.top, 10)
                 }
                 
-                VStack(alignment: .leading) {
-                    CardFormField(fieldTitle: "Card Number", text: $cardNumber, isCreditCardNumber: true)
-                        .keyboardType(.numberPad)
-                    
-                    CardFormField(fieldTitle: "Card Expiry Date", text: $cardExpiryDate, isExpiryDate: true)
-                        .keyboardType(.numberPad)
-                    
-                    CardFormField(fieldTitle: "Card Name", text: $cardName, autocapitalizationType: .words)
-                        .keyboardType(.alphabet)
-                    
-                    Button {
-                        isShowingSheet.toggle()
-                    } label: {
-                        Text("Scan card instead?")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.leading)
+                Button(action: {
+                    isShowingSheet.toggle()
+                }) {
+                    VStack(alignment: .center) {
+                        Image("scan")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60, height: 60)
+                        
+                        Text("Scan Card")
+                            .font(.system(size: 26, weight: .bold, design: .monospaced))
                     }
-                    .padding(.top, 20)
+                    .foregroundColor(.primaryColor)
+                    .padding(.all, 12)
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primaryColor, lineWidth: 1))
+                }
+                .padding(.top, 30)
+                                
+                VStack(alignment: .center) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        CardFormField(fieldTitle: "Card Number", text: $cardNumber, isCreditCardNumber: true)
+                            .keyboardType(.numberPad)
+                                            
+                        CardFormField(fieldTitle: "Card Name", text: $cardName, autocapitalizationType: .words)
+                            .keyboardType(.alphabet)
+                        
+                        HStack(spacing: 20) {
+                            CardFormField(fieldTitle: "Card Expiry Date", text: $cardExpiryDate, isExpiryDate: true)
+                                .keyboardType(.numberPad)
+                            
+                            CardFormField(fieldTitle: "CVC #", text: $cvcNumber)
+                                .keyboardType(.numberPad)
+                        }
+                    }
+                                        
+                    Button(action: {
+                        let cardInfo = CardDetails(
+                            numberWithDelimiters: cardNumber,
+                            name: cardName,
+                            expiryDate: cardExpiryDate,
+                            cvcNumber: cvcNumber
+                        )
+                        completion(cardInfo)
+                    }) {
+                        HStack(alignment: .center) {
+                            Image(systemName: "bookmark.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                            
+                            Text("Save")
+                                .font(.system(size: 26, weight: .bold, design: .monospaced))
+                        }
+                        .foregroundColor(Color.white)
+                        .padding(.all, 12)
+                        .background(colors.first)
+                        .cornerRadius(16)
+                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primaryColor, lineWidth: 1))
+                    }
+                    .padding(.top, 26)
                 }
                 .sheet(isPresented: $isShowingSheet) {
                     CardReaderView() { cardDetails in
-                        print(cardDetails)
+                        print(cardDetails ?? "")
                         cardNumber = cardDetails?.number ?? ""
                         cardExpiryDate = cardDetails?.expiryDate ?? ""
                         cardName = cardDetails?.name ?? ""
@@ -64,8 +113,11 @@ public struct CardFormView: View {
                     .edgesIgnoringSafeArea(.all)
                 }
                 .padding(.horizontal, 15)
-                .padding(.top, 50)
+                .padding(.top, 10)
             }
+        }
+        .onTapGesture {
+            UIApplication.shared.endEditing()
         }
     }
 }
@@ -73,6 +125,6 @@ public struct CardFormView: View {
 struct MainView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CardFormView()
+        CardFormView(completion: { _ in })
     }
 }

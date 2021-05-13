@@ -48,28 +48,27 @@ public struct CreditCardView: View {
                 .frame(width: 60, height: 60)
             
             Text(formattedCardNumber)
-                .font(.system(size: 26))
-                .bold()
+                .font(.system(size: 26, weight: .bold, design: .monospaced))
             
             Spacer()
             
             HStack(alignment: .center) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text("Name")
-                        .font(.system(size: 14))
-                    
+                        .font(.system(size: 14, weight: .regular, design: .rounded))
+
                     Text(formattedCardName)
-                        .bold()
+                        .font(.system(size: 16, weight: .bold, design: .monospaced))
                 }
                 
                 Spacer(minLength: 10)
                 
-                VStack(alignment: .trailing) {
+                VStack(alignment: .trailing, spacing: 4) {
                     Text("Exp. Date")
-                        .font(.system(size: 14))
-                    
+                        .font(.system(size: 14, weight: .regular, design: .rounded))
+
                     Text(formattedCardExpiryDate)
-                        .bold()
+                        .font(.system(size: 16, weight: .bold, design: .monospaced))
                 }
                 
                 Spacer(minLength: 10)
@@ -78,12 +77,11 @@ public struct CreditCardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 60, height: 60)
-                    .padding(.top)
             }
         }
-        .padding()
+        .padding(.init(top: 8, leading: 16, bottom: 4, trailing: 16))
         .foregroundColor(textColor)
-        .background(LinearGradient(gradient: Gradient(colors: backgroundColors), startPoint: .leading, endPoint: .trailing))
+        .background(LinearGradient(gradient: Gradient(colors: backgroundColors), startPoint: .topLeading, endPoint: .bottomTrailing))
         .cornerRadius(7)
         .frame(width: 340, height: 200, alignment: .center)
     }

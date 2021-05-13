@@ -59,6 +59,6 @@ public extension ImageTextRecognizable {
             CardType.allCases.map { $0.rawValue.uppercased() }
         let name = recognizedText.filter({ !wordsToAvoid.contains($0) }).last
         
-        return CardDetails(numberWithDelimiters: creditCardNumber, expiryDate: expiryDate, name: name)
+        return CardDetails(numberWithDelimiters: creditCardNumber, name: name, expiryDate: expiryDate)
     }
 }
