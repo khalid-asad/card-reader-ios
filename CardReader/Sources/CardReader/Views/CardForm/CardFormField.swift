@@ -76,11 +76,11 @@ public struct CardFormField: View {
                 }
             }
             .font(.system(size: 20, weight: .bold, design: .monospaced))
-            .foregroundColor(.black)
+            .foregroundColor(.textFieldTextColor)
             .autocapitalization(autocapitalizationType)
             .disableAutocorrection(true)
             .padding(.all, 6)
-            .background(Color.grayColor)
+            .background(Color.textFieldColor)
             .cornerRadius(5)
         }
     }
