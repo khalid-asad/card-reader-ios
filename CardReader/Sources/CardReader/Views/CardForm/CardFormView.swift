@@ -44,7 +44,7 @@ public struct CardFormView: View {
                 Button(action: {
                     isShowingSheet.toggle()
                 }) {
-                    VStack(alignment: .center) {
+                    HStack(alignment: .center) {
                         Image("scan", bundle: .module)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -55,9 +55,11 @@ public struct CardFormView: View {
                     }
                     .foregroundColor(.primaryColor)
                     .padding(.all, 12)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primaryColor, lineWidth: 1))
+                    .background(Color.textFieldColor)
+                    .cornerRadius(16)
                 }
                 .padding(.top, 30)
+                .padding(.bottom, 20)
                                 
                 VStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 10) {
@@ -86,19 +88,13 @@ public struct CardFormView: View {
                         completion(cardInfo)
                     }) {
                         HStack(alignment: .center) {
-                            Image(systemName: "bookmark.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
-                            
-                            Text("Save")
-                                .font(.system(size: 26, weight: .bold, design: .monospaced))
+                            Text("Submit")
+                                .font(.system(size: 26, weight: .bold, design: .default))
                         }
                         .foregroundColor(Color.white)
                         .padding(.all, 12)
-                        .background(colors.first)
-                        .cornerRadius(16)
-                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.primaryColor, lineWidth: 1))
+                        .background(Color.buttonColor)
+                        .cornerRadius(12)
                     }
                     .padding(.top, 26)
                 }

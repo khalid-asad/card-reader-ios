@@ -11,7 +11,15 @@ import SwiftUI
 public extension UIColor {
     
     static var darkGrayColor: UIColor {
-        UIColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+        UIColor(red: 21.0/255.0, green: 21.0/255.0, blue: 21.0/255.0, alpha: 1.0)
+    }
+    
+    static var grayColor: UIColor {
+        UIColor(red: 187/255.0, green: 187/255.0, blue: 187/255.0, alpha: 1.0)
+    }
+    
+    static var darkerGrayColor: UIColor {
+        UIColor(red: 49.0/255.0, green: 49.0/255.0, blue: 49.0/255.0, alpha: 1)
     }
 }
 
@@ -28,8 +36,16 @@ public extension Color {
     static var backgroundColor: Color {
         Color(UIColor { $0.userInterfaceStyle == .dark ? .darkGrayColor : .white })
     }
+        
+    static var textFieldColor: Color {
+        Color(UIColor { $0.userInterfaceStyle == .dark ? .darkerGrayColor : .grayColor })
+    }
     
-    static var grayColor: Color {
-        Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
+    static var textFieldTextColor: Color {
+        Color(UIColor { $0.userInterfaceStyle == .dark ? .white : .black })
+    }
+    
+    static var buttonColor: Color {
+        Color(UIColor(red: 50.0/255.0, green: 130/255.0, blue: 184/255.0, alpha: 1))
     }
 }
