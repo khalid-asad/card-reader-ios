@@ -61,11 +61,11 @@ public enum CardType: String, CaseIterable, Identifiable {
     
     public var image: Image? {
         switch self {
-        case .masterCard: return Image("mastercard-\(Color.isDarkInterfaceStyle ? "white" : "dark")-bg")
-        case .visa: return Image("visa")
-        case .amex: return Image("amex")
-        case .discover: return Image("discover")
-        case .dinersClubOrCarteBlanche: return Image("dinersclub")
+        case .masterCard: return Image("mastercard-\(Color.isDarkInterfaceStyle ? "white" : "dark")-bg", bundle: .module)
+        case .visa: return Image("visa", bundle: .module)
+        case .amex: return Image("amex", bundle: .module)
+        case .discover: return Image("discover", bundle: .module)
+        case .dinersClubOrCarteBlanche: return Image("dinersclub", bundle: .module)
         case .unknown: return nil
         }
     }

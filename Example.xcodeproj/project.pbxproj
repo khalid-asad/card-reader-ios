@@ -3,24 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19B45F61264B8A5C00B33163 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B45F60264B8A5C00B33163 /* Color+Extensions.swift */; };
-		19B45F69264B919400B33163 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B45F68264B919400B33163 /* CreditCardView.swift */; };
-		19B45F82264CCA3A00B33163 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B45F81264CCA3A00B33163 /* UIApplication+Extensions.swift */; };
+		19B460AB264E263E00B33163 /* CardReader in Frameworks */ = {isa = PBXBuildFile; productRef = 19B460AA264E263E00B33163 /* CardReader */; };
 		19DC60D02643524C00E29843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60CF2643524C00E29843 /* AppDelegate.swift */; };
 		19DC60D22643524C00E29843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60D12643524C00E29843 /* SceneDelegate.swift */; };
-		19DC60D92643524D00E29843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19DC60D82643524D00E29843 /* Assets.xcassets */; };
 		19DC60DC2643524D00E29843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DC60DA2643524D00E29843 /* LaunchScreen.storyboard */; };
 		19DC60E72643524D00E29843 /* CardReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60E62643524D00E29843 /* CardReaderTests.swift */; };
 		19DC60F22643524D00E29843 /* CardReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC60F12643524D00E29843 /* CardReaderUITests.swift */; };
-		19DC610B2643527200E29843 /* CardReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC610A2643527200E29843 /* CardReaderView.swift */; };
-		19DC628E2644D4A100E29843 /* ImageTextRecognizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */; };
-		19DC62942644DE7E00E29843 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC62932644DE7E00E29843 /* CardDetails.swift */; };
-		19DC62A82644EAA600E29843 /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC62A72644EAA600E29843 /* CardFormView.swift */; };
-		19DC62E52645FB8500E29843 /* CardFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC62E42645FB8500E29843 /* CardFormField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,26 +33,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		19B45F60264B8A5C00B33163 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		19B45F68264B919400B33163 /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
-		19B45F81264CCA3A00B33163 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
-		19DC60CC2643524C00E29843 /* CardReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19B4609C264E25D400B33163 /* CardReader */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CardReader; sourceTree = "<group>"; };
+		19DC60CC2643524C00E29843 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DC60CF2643524C00E29843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19DC60D12643524C00E29843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		19DC60D82643524D00E29843 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19DC60DB2643524D00E29843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19DC60DD2643524D00E29843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19DC60E22643524D00E29843 /* CardReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19DC60E22643524D00E29843 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DC60E62643524D00E29843 /* CardReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReaderTests.swift; sourceTree = "<group>"; };
 		19DC60E82643524D00E29843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19DC60ED2643524D00E29843 /* CardReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19DC60ED2643524D00E29843 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DC60F12643524D00E29843 /* CardReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReaderUITests.swift; sourceTree = "<group>"; };
 		19DC60F32643524D00E29843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19DC610A2643527200E29843 /* CardReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardReaderView.swift; sourceTree = "<group>"; };
-		19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextRecognizable.swift; sourceTree = "<group>"; };
-		19DC62932644DE7E00E29843 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
-		19DC62A72644EAA600E29843 /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
-		19DC62E42645FB8500E29843 /* CardFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B460AB264E263E00B33163 /* CardReader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,73 +73,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19B45F5C264B8A3B00B33163 /* Extensions */ = {
+		19B460A9264E263E00B33163 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				19B45F60264B8A5C00B33163 /* Color+Extensions.swift */,
-				19B45F81264CCA3A00B33163 /* UIApplication+Extensions.swift */,
 			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		19B45F6D264C700100B33163 /* CardForm */ = {
-			isa = PBXGroup;
-			children = (
-				19DC62A72644EAA600E29843 /* CardFormView.swift */,
-				19DC62E42645FB8500E29843 /* CardFormField.swift */,
-			);
-			path = CardForm;
-			sourceTree = "<group>";
-		};
-		19B45F6E264C701400B33163 /* CardReader */ = {
-			isa = PBXGroup;
-			children = (
-				19DC610A2643527200E29843 /* CardReaderView.swift */,
-			);
-			path = CardReader;
-			sourceTree = "<group>";
-		};
-		19B45F6F264C702000B33163 /* CreditCard */ = {
-			isa = PBXGroup;
-			children = (
-				19B45F68264B919400B33163 /* CreditCardView.swift */,
-			);
-			path = CreditCard;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		19DC60C32643524C00E29843 = {
 			isa = PBXGroup;
 			children = (
-				19DC60CE2643524C00E29843 /* CardReader */,
+				19B4609C264E25D400B33163 /* CardReader */,
+				19DC60CE2643524C00E29843 /* Example */,
 				19DC60E52643524D00E29843 /* CardReaderTests */,
 				19DC60F02643524D00E29843 /* CardReaderUITests */,
 				19DC60CD2643524C00E29843 /* Products */,
+				19B460A9264E263E00B33163 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		19DC60CD2643524C00E29843 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19DC60CC2643524C00E29843 /* CardReader.app */,
-				19DC60E22643524D00E29843 /* CardReaderTests.xctest */,
-				19DC60ED2643524D00E29843 /* CardReaderUITests.xctest */,
+				19DC60CC2643524C00E29843 /* Example.app */,
+				19DC60E22643524D00E29843 /* ExampleTests.xctest */,
+				19DC60ED2643524D00E29843 /* ExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		19DC60CE2643524C00E29843 /* CardReader */ = {
+		19DC60CE2643524C00E29843 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				19B45F5C264B8A3B00B33163 /* Extensions */,
-				19DC62922644DE7400E29843 /* Models */,
-				19DC62D02644F13900E29843 /* Views */,
 				19DC60CF2643524C00E29843 /* AppDelegate.swift */,
 				19DC60D12643524C00E29843 /* SceneDelegate.swift */,
-				19DC60D82643524D00E29843 /* Assets.xcassets */,
 				19DC60DA2643524D00E29843 /* LaunchScreen.storyboard */,
 				19DC60DD2643524D00E29843 /* Info.plist */,
 			);
-			path = CardReader;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		19DC60E52643524D00E29843 /* CardReaderTests */ = {
@@ -175,31 +131,12 @@
 			path = CardReaderUITests;
 			sourceTree = "<group>";
 		};
-		19DC62922644DE7400E29843 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				19DC62932644DE7E00E29843 /* CardDetails.swift */,
-				19DC628D2644D4A100E29843 /* ImageTextRecognizable.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		19DC62D02644F13900E29843 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				19B45F6D264C700100B33163 /* CardForm */,
-				19B45F6E264C701400B33163 /* CardReader */,
-				19B45F6F264C702000B33163 /* CreditCard */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		19DC60CB2643524C00E29843 /* CardReader */ = {
+		19DC60CB2643524C00E29843 /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19DC60F62643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReader" */;
+			buildConfigurationList = 19DC60F62643524D00E29843 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				19DC60C82643524C00E29843 /* Sources */,
 				19DC60C92643524C00E29843 /* Frameworks */,
@@ -209,14 +146,17 @@
 			);
 			dependencies = (
 			);
-			name = CardReader;
+			name = Example;
+			packageProductDependencies = (
+				19B460AA264E263E00B33163 /* CardReader */,
+			);
 			productName = CardReader;
-			productReference = 19DC60CC2643524C00E29843 /* CardReader.app */;
+			productReference = 19DC60CC2643524C00E29843 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		19DC60E12643524D00E29843 /* CardReaderTests */ = {
+		19DC60E12643524D00E29843 /* ExampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19DC60F92643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReaderTests" */;
+			buildConfigurationList = 19DC60F92643524D00E29843 /* Build configuration list for PBXNativeTarget "ExampleTests" */;
 			buildPhases = (
 				19DC60DE2643524D00E29843 /* Sources */,
 				19DC60DF2643524D00E29843 /* Frameworks */,
@@ -227,14 +167,14 @@
 			dependencies = (
 				19DC60E42643524D00E29843 /* PBXTargetDependency */,
 			);
-			name = CardReaderTests;
+			name = ExampleTests;
 			productName = CardReaderTests;
-			productReference = 19DC60E22643524D00E29843 /* CardReaderTests.xctest */;
+			productReference = 19DC60E22643524D00E29843 /* ExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		19DC60EC2643524D00E29843 /* CardReaderUITests */ = {
+		19DC60EC2643524D00E29843 /* ExampleUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19DC60FC2643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReaderUITests" */;
+			buildConfigurationList = 19DC60FC2643524D00E29843 /* Build configuration list for PBXNativeTarget "ExampleUITests" */;
 			buildPhases = (
 				19DC60E92643524D00E29843 /* Sources */,
 				19DC60EA2643524D00E29843 /* Frameworks */,
@@ -245,9 +185,9 @@
 			dependencies = (
 				19DC60EF2643524D00E29843 /* PBXTargetDependency */,
 			);
-			name = CardReaderUITests;
+			name = ExampleUITests;
 			productName = CardReaderUITests;
-			productReference = 19DC60ED2643524D00E29843 /* CardReaderUITests.xctest */;
+			productReference = 19DC60ED2643524D00E29843 /* ExampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -272,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 19DC60C72643524C00E29843 /* Build configuration list for PBXProject "CardReader" */;
+			buildConfigurationList = 19DC60C72643524C00E29843 /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -285,9 +225,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19DC60CB2643524C00E29843 /* CardReader */,
-				19DC60E12643524D00E29843 /* CardReaderTests */,
-				19DC60EC2643524D00E29843 /* CardReaderUITests */,
+				19DC60CB2643524C00E29843 /* Example */,
+				19DC60E12643524D00E29843 /* ExampleTests */,
+				19DC60EC2643524D00E29843 /* ExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19DC60DC2643524D00E29843 /* LaunchScreen.storyboard in Resources */,
-				19DC60D92643524D00E29843 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,16 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19B45F82264CCA3A00B33163 /* UIApplication+Extensions.swift in Sources */,
-				19DC62A82644EAA600E29843 /* CardFormView.swift in Sources */,
-				19DC610B2643527200E29843 /* CardReaderView.swift in Sources */,
 				19DC60D02643524C00E29843 /* AppDelegate.swift in Sources */,
-				19B45F61264B8A5C00B33163 /* Color+Extensions.swift in Sources */,
 				19DC60D22643524C00E29843 /* SceneDelegate.swift in Sources */,
-				19B45F69264B919400B33163 /* CreditCardView.swift in Sources */,
-				19DC628E2644D4A100E29843 /* ImageTextRecognizable.swift in Sources */,
-				19DC62E52645FB8500E29843 /* CardFormField.swift in Sources */,
-				19DC62942644DE7E00E29843 /* CardDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,12 +288,12 @@
 /* Begin PBXTargetDependency section */
 		19DC60E42643524D00E29843 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 19DC60CB2643524C00E29843 /* CardReader */;
+			target = 19DC60CB2643524C00E29843 /* Example */;
 			targetProxy = 19DC60E32643524D00E29843 /* PBXContainerItemProxy */;
 		};
 		19DC60EF2643524D00E29843 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 19DC60CB2643524C00E29843 /* CardReader */;
+			target = 19DC60CB2643524C00E29843 /* Example */;
 			targetProxy = 19DC60EE2643524D00E29843 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -502,12 +433,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2U7U8L936R;
-				INFOPLIST_FILE = CardReader/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Rogers.CardReader;
+				PRODUCT_BUNDLE_IDENTIFIER = Logismiko.CardReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,12 +452,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N7ZNEH23J7;
-				INFOPLIST_FILE = CardReader/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Rogers.CardReader;
+				PRODUCT_BUNDLE_IDENTIFIER = Logismiko.CardReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -551,7 +482,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardReader.app/CardReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
 		};
@@ -573,7 +504,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardReader.app/CardReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
 		};
@@ -620,7 +551,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		19DC60C72643524C00E29843 /* Build configuration list for PBXProject "CardReader" */ = {
+		19DC60C72643524C00E29843 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19DC60F42643524D00E29843 /* Debug */,
@@ -629,7 +560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19DC60F62643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReader" */ = {
+		19DC60F62643524D00E29843 /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19DC60F72643524D00E29843 /* Debug */,
@@ -638,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19DC60F92643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReaderTests" */ = {
+		19DC60F92643524D00E29843 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19DC60FA2643524D00E29843 /* Debug */,
@@ -647,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19DC60FC2643524D00E29843 /* Build configuration list for PBXNativeTarget "CardReaderUITests" */ = {
+		19DC60FC2643524D00E29843 /* Build configuration list for PBXNativeTarget "ExampleUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19DC60FD2643524D00E29843 /* Debug */,
@@ -657,6 +588,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		19B460AA264E263E00B33163 /* CardReader */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CardReader;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 19DC60C42643524C00E29843 /* Project object */;
 }
