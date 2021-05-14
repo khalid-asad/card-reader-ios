@@ -7,7 +7,7 @@
 
 A credit card reader and parser for iOS Using Native Vision/VisionKit
 
-https://user-images.githubusercontent.com/37077623/118071540-f94c3a00-b375-11eb-97cc-35326e19499b.mp4
+https://user-images.githubusercontent.com/37077623/118222340-71396380-b44d-11eb-9e81-573b00fddc97.mp4
 
 ## Instructions
 
