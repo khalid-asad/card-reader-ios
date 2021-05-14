@@ -14,7 +14,7 @@ public protocol ImageTextRecognizable: VNDocumentCameraViewControllerDelegate { 
 public extension ImageTextRecognizable {
     
     func validateImage(image: UIImage?, completion: @escaping (CardDetails?) -> Void) {
-        guard let cgImage = image?.cgImage else { return }
+        guard let cgImage = image?.cgImage else { return completion(nil) }
         
         var recognizedText = [String]()
         
@@ -26,10 +26,9 @@ public extension ImageTextRecognizable {
             guard let results = request.results,
                   !results.isEmpty,
                   let requestResults = request.results as? [VNRecognizedTextObservation]
-            else { return }
+            else { return completion(nil) }
             recognizedText = requestResults.compactMap { observation in
-                guard let candidiate = observation.topCandidates(1).first else { return nil }
-                return candidiate.string
+                return observation.topCandidates(1).first?.string
             }
         }
         
@@ -44,7 +43,7 @@ public extension ImageTextRecognizable {
     
     func parseResults(for recognizedText: [String]) -> CardDetails {
         // Credit Card Number
-        let creditCardNumber = recognizedText.first(where: { $0.count > 14 && ["4", "5", "3", "6"].contains($0.first) })
+        let creditCardNumber = recognizedText.first(where: { $0.count >= 14 && ["4", "5", "3", "6"].contains($0.first) })
         
         // Expiry Date
         let expiryDateString = recognizedText.first(where: { $0.count > 4 && $0.contains("/") })
