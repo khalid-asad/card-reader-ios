@@ -42,7 +42,7 @@ public struct CreditCardView: View {
             Spacer()
             Spacer()
             
-            Image("chip")
+            Image("chip", bundle: .module)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 60, height: 60)

@@ -5,6 +5,7 @@
 //  Created by Khalid Asad on 2021-05-05.
 //
 
+import CardReader
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

@@ -45,7 +45,7 @@ public struct CardFormView: View {
                     isShowingSheet.toggle()
                 }) {
                     VStack(alignment: .center) {
-                        Image("scan")
+                        Image("scan", bundle: .module)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 60, height: 60)
