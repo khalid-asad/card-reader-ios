@@ -30,9 +30,15 @@ public struct CardFormView: View {
     public var body: some View {
         ScrollView(.vertical) {
             VStack {
-                CreditCardView(backgroundColors: colors, cardNumber: $cardNumber, cardExpiryDate: $cardExpiryDate, cardName: $cardName)
-                    .shadow(color: .primaryColor, radius: 5)
-                    .padding(.top, 60)
+                CreditCardView(
+                    viewModel:.init(
+                        cardNumber: cardNumber,
+                        cardExpiryDate: cardExpiryDate,
+                        cardName: cardName
+                    )
+                )
+                .shadow(color: .primaryColor, radius: 5)
+                .padding(.top, 60)
                                 
                 if cardIndustry != .unknown {
                     Text(cardIndustry.rawValue)
