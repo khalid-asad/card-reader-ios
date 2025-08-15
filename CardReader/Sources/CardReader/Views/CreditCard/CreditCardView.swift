@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct CreditCardView: View {
     
-    @ObservedObject private(set) var viewModel: ViewModel
+    private(set) var viewModel: ViewModel
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }

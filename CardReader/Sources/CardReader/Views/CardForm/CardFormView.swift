@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct CardFormView: View {
     
-    @ObservedObject private(set) var viewModel: ViewModel
+    private(set) var viewModel: ViewModel
     @State var isShowingSheet = false
     public var completion: ((CardDetails) -> Void)
     

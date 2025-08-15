@@ -10,12 +10,12 @@ import SwiftUI
 
 extension CardFormView {
     
-    public class ViewModel: ObservableObject {
+    @Observable public class ViewModel {
         
-        @Published var cardNumber: String = ""
-        @Published var cardName: String = ""
-        @Published var cardExpiryDate: String = ""
-        @Published var cvcNumber: String = ""
+        var cardNumber: String = ""
+        var cardName: String = ""
+        var cardExpiryDate: String = ""
+        var cvcNumber: String = ""
                 
         var colors: [Color]
         var formattedCardNumber: String { cardNumber == "" ? "4111 2222 3333 4444" : cardNumber }

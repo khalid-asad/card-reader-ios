@@ -9,11 +9,11 @@ import SwiftUI
 
 extension CreditCardView {
     
-    public class ViewModel: ObservableObject {
+    @Observable public class ViewModel {
                 
-        @Published var cardNumber: String
-        @Published var cardExpiryDate: String
-        @Published var cardName: String
+        var cardNumber: String
+        var cardExpiryDate: String
+        var cardName: String
         
         var backgroundColors: [Color]
         var textColor: Color
