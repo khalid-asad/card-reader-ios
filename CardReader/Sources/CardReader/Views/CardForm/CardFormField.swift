@@ -42,14 +42,23 @@ public struct CardFormField: View {
     
     public var body: some View {
         VStack(alignment: .leading) {
+            
             Text(fieldTitle)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
                 .foregroundColor(isEditing ? .red : .primaryColor)
             
             Group {
+                
                 if isSecure {
-                    SecureField("", text: $text, onCommit: { onEdit?() })
+                    SecureField(
+                        "",
+                        text: $text,
+                        onCommit: {
+                            onEdit?()
+                        }
+                    )
                 } else {
+                    
                     TextField(
                         "",
                         text: $text,
@@ -86,11 +95,12 @@ public struct CardFormField: View {
     }
 }
 
-//struct CardFormField_Previews: PreviewProvider {
-//
-//    @State var text: String
-//
-//    static var previews: some View {
-//        CardFormField(fieldTitle: "Card number", text: $text)
-//    }
-//}
+struct CardFormField_Previews: PreviewProvider {
+
+    static var previews: some View {
+        CardFormField(
+            fieldTitle: "Card number",
+            text: .init(get: { "4520 1234 5678 9012" }, set: { _ in })
+        )
+    }
+}

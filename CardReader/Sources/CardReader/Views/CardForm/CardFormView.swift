@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  CardFormView.swift
 //  CardReader
 //
 //  Created by Khalid Asad on 2021-05-06.
@@ -10,20 +10,12 @@ import SwiftUI
 
 public struct CardFormView: View {
     
-    @State private var isShowingSheet = false
-    @State private var cardNumber: String = ""
-    @State private var cardName: String = ""
-    @State private var cardExpiryDate: String = ""
-    @State private var cvcNumber: String = ""
-    
+    @ObservedObject private(set) var viewModel: ViewModel
+    @State var isShowingSheet = false
     public var completion: ((CardDetails) -> Void)
     
-    private var colors: [Color]
-    private var formattedCardNumber: String { cardNumber == "" ? "4111 2222 3333 4444" : cardNumber }
-    private var cardIndustry: CardIndustry { .init(firstDigit: formattedCardNumber.first) }
-        
-    public init(colors: [Color] = [.green, .blue, .black], completion: @escaping ((CardDetails) -> Void )) {
-        self.colors = colors
+    public init(viewModel: ViewModel, completion: @escaping ((CardDetails) -> Void )) {
+        self.viewModel = viewModel
         self.completion = completion
     }
     
@@ -32,16 +24,16 @@ public struct CardFormView: View {
             VStack {
                 CreditCardView(
                     viewModel:.init(
-                        cardNumber: cardNumber,
-                        cardExpiryDate: cardExpiryDate,
-                        cardName: cardName
+                        cardNumber: viewModel.cardNumber,
+                        cardExpiryDate: viewModel.cardExpiryDate,
+                        cardName: viewModel.cardName
                     )
                 )
                 .shadow(color: .primaryColor, radius: 5)
                 .padding(.top, 60)
                                 
-                if cardIndustry != .unknown {
-                    Text(cardIndustry.rawValue)
+                if viewModel.cardIndustry != .unknown {
+                    Text(viewModel.cardIndustry.rawValue)
                         .font(.system(size: 14))
                         .foregroundColor(.primaryColor)
                         .padding(.top, 10)
@@ -69,28 +61,38 @@ public struct CardFormView: View {
                                 
                 VStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 10) {
-                        CardFormField(fieldTitle: "Card Number", text: $cardNumber, isCreditCardNumber: true)
-                            .keyboardType(.numberPad)
-                                            
-                        CardFormField(fieldTitle: "Card Name", text: $cardName, autocapitalizationType: .words)
-                            .keyboardType(.alphabet)
+                        CardFormField(
+                            fieldTitle: "Card Number",
+                            text: Binding<String>(get: { viewModel.cardNumber}, set: { viewModel.cardNumber = $0 }),
+                            isCreditCardNumber: true
+                        )
+                        .keyboardType(.numberPad)
+                        
+                        CardFormField(
+                            fieldTitle: "Card Name",
+                            text: Binding<String>(get: { viewModel.cardName}, set: { viewModel.cardName = $0 }),
+                            autocapitalizationType: .words
+                        )
+                        .keyboardType(.alphabet)
                         
                         HStack(spacing: 20) {
-                            CardFormField(fieldTitle: "Card Expiry Date", text: $cardExpiryDate, isExpiryDate: true)
-                                .keyboardType(.numberPad)
+                            CardFormField(
+                                fieldTitle: "Card Expiry Date",
+                                text: Binding<String>(get: { viewModel.cardExpiryDate}, set: { viewModel.cardExpiryDate = $0 }),
+                                isExpiryDate: true
+                            )
+                            .keyboardType(.numberPad)
                             
-                            CardFormField(fieldTitle: "CVC #", text: $cvcNumber)
-                                .keyboardType(.numberPad)
+                            CardFormField(
+                                fieldTitle: "CVC #",
+                                text: Binding<String>(get: { viewModel.cvcNumber}, set: { viewModel.cvcNumber = $0 })
+                            )
+                            .keyboardType(.numberPad)
                         }
                     }
                                         
                     Button(action: {
-                        let cardInfo = CardDetails(
-                            numberWithDelimiters: cardNumber,
-                            name: cardName,
-                            expiryDate: cardExpiryDate,
-                            cvcNumber: cvcNumber
-                        )
+                        let cardInfo = viewModel.cardDtails
                         completion(cardInfo)
                     }) {
                         HStack(alignment: .center) {
@@ -107,9 +109,9 @@ public struct CardFormView: View {
                 .sheet(isPresented: $isShowingSheet) {
                     CardReaderView() { cardDetails in
                         print(cardDetails ?? "")
-                        cardNumber = cardDetails?.number ?? ""
-                        cardExpiryDate = cardDetails?.expiryDate ?? ""
-                        cardName = cardDetails?.name ?? ""
+                        viewModel.cardNumber = cardDetails?.number ?? ""
+                        viewModel.cardExpiryDate = cardDetails?.expiryDate ?? ""
+                        viewModel.cardName = cardDetails?.name ?? ""
                         isShowingSheet.toggle()
                     }
                     .edgesIgnoringSafeArea(.all)
@@ -129,6 +131,14 @@ public struct CardFormView: View {
 struct MainView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CardFormView(completion: { _ in })
+        CardFormView(
+            viewModel: .init(),
+            completion: { cardInfo in
+                print("Name: \(cardInfo.name ?? "")")
+                print("Number: \(cardInfo.number ?? "")")
+                print("Expiry Date: \(cardInfo.expiryDate ?? "")")
+                print("CVC: \(cardInfo.cvcNumber ?? "")")
+            }
+        )
     }
 }
