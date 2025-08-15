@@ -21,13 +21,21 @@ extension CardFormView {
         var formattedCardNumber: String { cardNumber == "" ? "4111 2222 3333 4444" : cardNumber }
         var cardIndustry: CardIndustry { .init(firstDigit: formattedCardNumber.first) }
         
-        var cardDtails: CardDetails {
-            return CardDetails(
-                numberWithDelimiters: cardNumber,
-                name: cardName,
-                expiryDate: cardExpiryDate,
-                cvcNumber: cvcNumber
-            )
+        var cardDetails: CardDetails {
+            get {
+                return CardDetails(
+                    numberWithDelimiters: cardNumber,
+                    name: cardName,
+                    expiryDate: cardExpiryDate,
+                    cvcNumber: cvcNumber
+                )
+            }
+            set {
+                cardName = newValue.name ?? ""
+                cardNumber = newValue.number ?? ""
+                cardExpiryDate = newValue.expiryDate ?? ""
+                cvcNumber = newValue.cvcNumber ?? ""
+            }
         }
         
         public init(colors: [Color] = [.green, .blue, .black]) {

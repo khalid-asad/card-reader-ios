@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct CardFormView: View {
     
-    private(set) var viewModel: ViewModel
+    @Bindable private(set) var viewModel: ViewModel
     @State var isShowingSheet = false
     public var completion: ((CardDetails) -> Void)
     
@@ -63,14 +63,14 @@ public struct CardFormView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         CardFormField(
                             fieldTitle: "Card Number",
-                            text: Binding<String>(get: { viewModel.cardNumber}, set: { viewModel.cardNumber = $0 }),
+                            text: $viewModel.cardNumber,
                             isCreditCardNumber: true
                         )
                         .keyboardType(.numberPad)
                         
                         CardFormField(
                             fieldTitle: "Card Name",
-                            text: Binding<String>(get: { viewModel.cardName}, set: { viewModel.cardName = $0 }),
+                            text: $viewModel.cardName,
                             autocapitalizationType: .words
                         )
                         .keyboardType(.alphabet)
@@ -78,21 +78,21 @@ public struct CardFormView: View {
                         HStack(spacing: 20) {
                             CardFormField(
                                 fieldTitle: "Card Expiry Date",
-                                text: Binding<String>(get: { viewModel.cardExpiryDate}, set: { viewModel.cardExpiryDate = $0 }),
+                                text: $viewModel.cardExpiryDate,
                                 isExpiryDate: true
                             )
                             .keyboardType(.numberPad)
                             
                             CardFormField(
                                 fieldTitle: "CVC #",
-                                text: Binding<String>(get: { viewModel.cvcNumber}, set: { viewModel.cvcNumber = $0 })
+                                text: $viewModel.cvcNumber
                             )
                             .keyboardType(.numberPad)
                         }
                     }
                                         
                     Button(action: {
-                        let cardInfo = viewModel.cardDtails
+                        let cardInfo = viewModel.cardDetails
                         completion(cardInfo)
                     }) {
                         HStack(alignment: .center) {
@@ -109,9 +109,9 @@ public struct CardFormView: View {
                 .sheet(isPresented: $isShowingSheet) {
                     CardReaderView() { cardDetails in
                         print(cardDetails ?? "")
-                        viewModel.cardNumber = cardDetails?.number ?? ""
-                        viewModel.cardExpiryDate = cardDetails?.expiryDate ?? ""
-                        viewModel.cardName = cardDetails?.name ?? ""
+                        if let cardDetails {
+                            viewModel.cardDetails = cardDetails
+                        }
                         isShowingSheet.toggle()
                     }
                     .edgesIgnoringSafeArea(.all)
